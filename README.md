@@ -1,1 +1,1 @@
-# This Repository is for adding PowerShell Scripts used in Windows servers
+# This Repository is for PowerShell Scripts used in Windows servers

@@ -1,0 +1,31 @@
+Configure a Server by Using Windows PowerShell Desired State Configuration
+
+#Step1 : Open the Windows PowerShell ISE as an administrator, and then create a Desired State Configuration (DSC) configuration script to deploy Internet Information Server (IIS) by using the following template:
+Configuration = 'Configuration WebServerConfiguration
+{
+  Node "localhost"
+  {
+    WindowsFeature WebServer
+    {
+    Name = "Web-Server"
+    Ensure = "Present"
+    }
+    WindowsFeature ManagementTools
+    {
+    Name = "Web-Mgmt-Tools"
+    Ensure = "Present"
+    }
+    WindowsFeature DefaultDoc
+    {
+    Name = "Web-Default-Doc"
+    Ensure = "Present"
+    }
+  }
+}
+WebServerConfiguration -OutputPath "D:\WebServerConfiguration"'
+
+#Step2: Save the script as D:\webserverDSC.ps1
+
+#Step3: Start-DscConfiguration -path D:\WebServerConfiguration -Verbose -Wait
+
+#Step4: Test-DscConfiguration D:\WebServerConfiguration
